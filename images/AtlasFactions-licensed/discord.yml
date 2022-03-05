@@ -1,0 +1,120 @@
+settings:
+  token: "REDACTED"
+  server-name: "Atlas Factions"
+  server-guild-id: ""
+
+commands:
+  fwho:
+    description: "View information about a faction"
+    message:
+      title: "Name MC | Atlas Factions"
+      message:
+        - "Description <description>"
+        - "Shield <shield>"
+        - "Strikes <strikes>"
+        - "Online Members <online-members>"
+        - "Offline Members <offline-members"
+      image: ''
+      thumbnail: https://cdn.discordapp.com/attachments/745831931698086018/816579044040507443/AtlasLogo.png
+      color: '171:0:0'
+      timestamp: true
+      footer: "Atlas Factions Bot"
+    invalid-faction:
+      title: "Name MC | Atlas Factions"
+      message:
+        - "Faction does not exist"
+      image: ''
+      thumbnail: https://cdn.discordapp.com/attachments/745831931698086018/816579044040507443/AtlasLogo.png
+      color: '171:0:0'
+      timestamp: true
+      footer: "Atlas Factions Bot"
+    invalid:
+      title: "Name MC | Atlas Factions"
+      message:
+        - Invalid Command Usage
+        - '``.fwho <faction>``'
+      image: ''
+      thumbnail: https://cdn.discordapp.com/attachments/745831931698086018/816579044040507443/AtlasLogo.png
+      color: '171:0:0'
+      timestamp: true
+      footer: "Atlas Factions Bot"
+    roles:
+      - "0"
+  ftop:
+    description: "Showcase top factions with the most value"
+    message:
+      entries: 10
+      title: "Atlas Factions Top"
+      format: "**<position>.** **<faction>** ``$<value>``\n"
+      message: []
+      image: ""
+      thumbnail: "https://cdn.discordapp.com/attachments/745831931698086018/816579044040507443/AtlasLogo.png"
+      color: '171:0:0'
+      timestamp: true
+      footer: "Atlas Factions Bot"
+    roles:
+      - "0"
+  no-permission:
+    message:
+      title: "Name MC | Atlas Factions"
+      message:
+        - Invalid Command Usage
+        - '``.namemc <name>``'
+      image: ''
+      thumbnail: https://cdn.discordapp.com/attachments/745831931698086018/816579044040507443/AtlasLogo.png
+      color: '171:0:0'
+      timestamp: true
+      footer: "Atlas Factions Bot"
+  help:
+    description: "View all listed commands"
+    message:
+      title: "Name MC | Atlas Factions"
+      message: []
+      image: ""
+      thumbnail: "https://cdn.discordapp.com/attachments/745831931698086018/816579044040507443/AtlasLogo.png"
+      color: '171:0:0'
+      timestamp: true
+      footer: "Atlas Factions Bot"
+    roles:
+      - "0"
+    alias:
+      - "h"
+  namemc:
+    description: "Grab name history of a player!"
+    roles:
+      - "0"
+    alias:
+      - "namemc"
+    messages:
+      message:
+        title: "Name MC | Atlas Factions"
+        message: []
+        image: ""
+        thumbnail: "https://crafatar.com/renders/body/<uuid>"
+        color: '171:0:0'
+        timestamp: true
+        footer: "Atlas Factions Bot"
+      invalid:
+        title: "Name MC | Atlas Factions"
+        message:
+          - Invalid Command Usage
+          - '``.namemc <name>``'
+        image: ''
+        thumbnail: https://cdn.discordapp.com/attachments/745831931698086018/816579044040507443/AtlasLogo.png
+        color: '171:0:0'
+        timestamp: true
+        footer: "Atlas Factions Bot"
+  embed:
+    description: "Creates a embed message!"
+    roles:
+      - "0"
+    alias:
+      - "embed"
+    messages:
+      message:
+        title: "Atlas Factions"
+        image: ''
+        thumbnail: https://cdn.discordapp.com/attachments/745831931698086018/816579044040507443/AtlasLogo.png
+        color: '171:0:0'
+        timestamp: true
+        footer: ''

@@ -1,0 +1,2823 @@
+# FactionsUUID code base made by Trent, Modified by Elapsed
+
+license-key: "REDACTED"
+
+faction-settings:
+  prevent-self-explosion-in-land: true
+  anti-tracker-bot: true
+  anti-tracker-placeholders:
+    - "{chunks}"
+  wand-regions: false
+  max-relations:
+    enabled: true
+    ally: 0
+    truce: 0
+    neutral: -1
+    enemy: -1
+  warmups:
+    f-warp: 5
+    f-home: 5
+  world-border-buffer: 1
+  allow-overclaim: true
+  powerfreeze: 0
+  buffer-zone: 0
+  dtr: false
+  raidable: false
+  stuck:
+    delay: 30
+    radius: 10
+  base-region-radius: 32
+  default-relation: enemy
+  faction-map-cooldown: 2000
+  disable-pistons-in-territory: false
+  toggles:
+    shields_lock: false
+    spawner_lock: false
+    sotw: false
+    grace: false
+  minimal-show: false
+  broadcast:
+    open: false
+    disband: false
+    creation: true
+  show-exempt:
+    - "Wilderness"
+  default-rules:
+    - '&6&lFACTION RULES:'
+    - '&e&l#1 &fNo Insiding'
+    - '&e&l#2 &fNo Bitch Claims'
+    - '&e&l#3 &fNo Marging'
+    - '&e&l#4 &fNo Exploiting or Glitching'
+    - '&e&l#5 &fNo Account Sharing'
+    - '&7'
+    - '&fUse &e/f rules add <rule> &fto add a rule'
+  near-radius: 50
+  title-bar:
+    enabled: true
+    faction-land-change:
+      title: "<faction>"
+      subtitle: "<description>"
+  see-chunk:
+    particles: true
+    interval: 5
+
+commands:
+  alt: true
+  money-vault: true
+  exp-vault: true
+  tnt-vault: true
+  focus: true
+  inspect-mode: true
+  login-monitor: true
+  logs: true
+  near: true
+  faction-homes: true
+  self-coords: true
+  disguises: true
+  drain: true
+  fly: true
+  fly-particles: true
+  see-chunk: true
+  player-settings: true
+  faction-shields: true
+  faction-shop: true
+  stuck: true
+  rules: true
+  paypal: true
+  discord: true
+  vault: true
+  upgrades: true
+  points: true
+  tnt: true
+  tnt-fill: true
+  warp: true
+  roster: true
+  raidclaims: true
+
+#
+# Prevent players from setting home permanently in enemy claims
+# with an expiration status.
+#
+anti-sethome:
+  enabled: true
+  expiration: 90000
+
+#
+# Buttons
+# Universal buttons that are shared across all menus
+#
+buttons:
+  confirm-title: "&6Confirm Menu"
+  confirm-button:
+    title: "&a&lCONFIRM"
+    lore: [ ]
+    material: "STAINED_GLASS_PANE"
+    data: 5
+    url: "http://textures.minecraft.net/texture/77472d608821f45a8805376ec0c6ffcb78117829ea5f960041c2a09d10e04cb4"
+  deny-button:
+    title: "&c&lDENY"
+    lore: [ ]
+    material: "STAINED_GLASS_PANE"
+    data: 14
+    url: "http://textures.minecraft.net/texture/6953b12a0946b629b4c0889d41fd26ed26fb729d4d514b59727124c37bb70d8d"
+  previous-button:
+    title: "&cPrevious Button"
+    lore: [ ]
+    material: "PAPER"
+    data: 0
+    url: ""
+  next-button:
+    title: "&aNext Page"
+    lore: [ ]
+    material: "PAPER"
+    data: 0
+    url: ""
+  no-page:
+    title: "&c&lPage Not Found!"
+    lore: [ ]
+    material: "BARRIER"
+    data: 0
+    url: ""
+  go-back:
+    title: "&c&lRETURN"
+    material: "NETHER_STAR"
+    data: 0
+    lore:
+      - "&eClick On Me &fto return!"
+    url: ""
+
+#
+# Confirm items
+# A menu that pops up to a sure that the action the player
+# is going to execute is confirmed
+#
+confirm-items:
+  unclaimall:
+    title: "&6&lUNCLAIM ALL CONFIRMATION"
+    lore:
+      - ""
+      - "&fBy pressing &a&lCONFIRM &fyou will"
+      - "&funclaim all your faction land!"
+      - "&fClick &c&lDENY &fto exit this menu"
+    material: GRASS
+    data: 0
+    url: ""
+  disband:
+    title: "&6&lDISBAND CONFIRMATION"
+    lore:
+      - ""
+      - "&fBy pressing &a&lCONFIRM &fyou will"
+      - "&fdisband your faction and all of"
+      - "&fyour land will be unclaimed"
+      - "&fClick &c&lDENY &fto exit this menu"
+    material: OBSIDIAN
+    data: 0
+    url: ""
+
+#
+# Faction Shop
+# A shop menu that allows players to buy things
+# with their faction points
+#
+shop-settings:
+  title: "&6Faction Shop"
+  rows: 3
+  fill:
+    title: "&7"
+    lore: [ ]
+    material: "STAINED_GLASS_PANE"
+    data: 15
+    url: ""
+  items:
+    1:
+      commands:
+        - "harvesterhoes give <player> 1 0"
+      slot: 10
+      cost: 500
+      title: "&e&l*&6&l* &e&lHARVESTER HOE &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&6&lDESCRIPTION:"
+        - "&fUse this hoe to make farming"
+        - "&fsugar cane even more efficient."
+        - "&fUpgrade your hoe as you mine"
+        - "&fsugar cane!"
+        - "&r"
+        - "&6&lINFORMATION:"
+        - "&6&l* &ePrice: &f500 Points"
+        - "&6&l* &eAmount: &f1x"
+        - "&r"
+        - "&e&lClick Me &fto purchase"
+      material: DIAMOND_HOE
+      data: 0
+      url: ""
+    2:
+      commands:
+        - "give <player> creeperegg 3"
+      slot: 13
+      cost: 5
+      title: "&e&l*&6&l* &e&lCREEPER EGG &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&6&lDESCRIPTION:"
+        - "&fYou can use different display"
+        - "&fitem if you chose to!"
+        - "&r"
+        - "&6&lINFORMATION:"
+        - "&6&l* &ePrice: &f5 Points"
+        - "&6&l* &eAmount: &f3x"
+        - "&r"
+        - "&e&lClick Me &fto purchase"
+      material: WOOL
+      data: 14
+      url: ""
+    3:
+      commands:
+        - "your command here!<player> is the placeholder for the player"
+      slot: 16
+      cost: 2
+      title: "&e&l*&6&l* &e&lMOB COLLECTOR &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&6&lDESCRIPTION:"
+        - "&fCollects all the mob drops in a chunk"
+        - "&r"
+        - "&6&lINFORMATION:"
+        - "&6&l* &ePrice: &f350 Points"
+        - "&6&l* &eAmount: &f1x"
+        - "&r"
+        - "&e&lClick Me &fto purchase"
+      material: BEACON
+      data: 0
+      url: ""
+
+#
+# Faction Chest Settings
+# A private vault for factions to store valuable items shared acrossed
+# trusted/permissed ranks/players
+#
+chest-settings:
+  title: "&6&l<faction>'s &fFaction Chest"
+  blacklisted-items:
+    - STONE:0
+
+#
+# Faction Warp Settings
+# A system that allows factions to store locations for faster travel
+# shared across all members with custom icons and stuff....
+#
+warp-settings:
+  icon-menu:
+    title: "&6Warp Icons"
+    icon-item:
+      title: "&d&lWarp Icon"
+      lore:
+        - "&6&l* &eWarp: &f<warp>"
+        - "&r"
+        - "&eClick Me&f to set the icon"
+    icons:
+      - DIAMOND:0
+      - DIAMOND_BLOCK:0
+      - EMERALD:0
+      - EMERALD_BLOCK:0
+      - STONE:0
+    confirm:
+      title: "&a&lCONFIRMATION"
+      lore:
+        - "&fAre you sure you want to change"
+        - "&fthis warp icon?"
+        - ""
+        - "&eClick Me&f to confirm!"
+    fill:
+      title: ""
+      lore: [ ]
+      material: "STAINED_GLASS_PANE"
+      data: 15
+      url: ""
+  warp-menu:
+    title: "&6Faction Warps"
+    rows: 3
+    slots: [ 11, 12, 13, 14 , 15 ]
+    item:
+      title: "&6&l<warp> Faction Warp"
+      lore:
+        - ''
+        - '&6&l* &eName: &f<warp>'
+        - '&6&l* &ePassword: &f<warp-protected>'
+        - '&6&l* &eCost: &f<warp-cost>'
+        - ''
+        - '&7&oYou may need to pay to teleport!'
+      material: "EYE_OF_ENDER"
+      data: 0
+      url: ""
+    empty:
+      title: "&c&lEMPTY WARP SLOT"
+      lore:
+        - ''
+        - '&fSet a faction warp by doing:'
+        - '&e/f setwarp <name> <password>'
+      material: "BARRIER"
+      data: 0
+      url: ""
+    fill:
+      title: ""
+      lore: [ ]
+      material: "STAINED_GLASS_PANE"
+      data: 15
+      url: ""
+  password-timeout: 5
+  max-warps: 5
+  cost:
+    enabled: false
+    create: 100
+    delete: 100
+    activate: 100
+
+#
+# Faction Fly Settings
+# A fly system that allows players to have access to custom fly
+# particles and fully controlling when they are allowed to fly
+#
+fly-settings:
+  warm-up: 0
+  enabled: true
+  auto-enable: true
+  damage-cooldown: 10
+  particle-menu:
+    title: "&6Fly Particles"
+    fill:
+      title: "&r"
+      lore: [ ]
+      material: STAINED_GLASS_PANE
+      data: 15
+      url: ""
+    disable:
+      title: "&cDisable particles"
+      lore: [ ]
+      material: STAINED_GLASS_PANE
+      data: 14
+      url: ""
+    particles:
+      1:
+        title: "&cRed Particles"
+        lore:
+          - "&eClick Here&f to use this color!"
+        material: STONE
+        data: 0
+        url: "https://textures.minecraft.net/texture/5fde3bfce2d8cb724de8556e5ec21b7f15f584684ab785214add164be7624b"
+        color: "255:0:0"
+      2:
+        title: "&aGreen Particles"
+        lore:
+          - "&eClick Here&f to use this color!"
+        material: STONE
+        data: 0
+        url: "https://textures.minecraft.net/texture/8e9b27fccd80921bd263c91dc511d09e9a746555e6c9cad52e8562ed0182a2f"
+        color: "0:255:0"
+      3:
+        title: "&6Blue Particles"
+        lore:
+          - "&eClick Here&f to use this color!"
+        material: STONE
+        data: 0
+        url: "https://textures.minecraft.net/texture/b8afa1555e9f876481e3c4299ec6e91d22b4075e67e58ef80dcd190ace6519f"
+        color: "0:0:255"
+      4:
+        title: "&dViolet"
+        lore:
+          - "&fThis is a custom color!"
+          - ""
+          - "&eClick Here&f to use this color!"
+        material: STONE
+        data: 0
+        url: "http://textures.minecraft.net/texture/c143f422db8e958bbb5de2368692bde6960e4822678b010e24797e7979b5b7"
+        color: "238:130:238"
+
+#
+# Faction Alt Settings
+#
+alt-settings:
+  alt-menu:
+    title: "&6Alt Settings"
+    alt-item:
+      title: "&6&l<player> &8[&6&lALT&8]"
+      lore:
+        - "&r"
+        - "&7This player is not real and is"
+        - "&7an NPC!"
+        - "&r"
+        - "&eLeft-Click&f to summon the alt"
+        - "&eRight-Click&f to kick the alt"
+    teleport-confirm:
+      title: "&6&lARE YOU SURE?"
+      lore:
+        - "&fYou are teleporting &e&n<player>&f to you!"
+    kick-confirm:
+      title: "&6&lARE YOU SURE?"
+      lore:
+        - "&fYou are kicking &e&n<player>&f!"
+    fill:
+      title: ""
+      lore: [ ]
+      material: "STAINED_GLASS_PANE"
+      data: 15
+      url: ""
+
+#
+# Faction Logs
+#
+log-settings:
+  title: "&6Audit Log"
+  panel-title: "&6<log-type> &6Audit Log"
+  FILL:
+    title: ""
+    lore: [ ]
+    material: STAINED_GLASS_PANE
+    data: 15
+    url: ""
+  SHIELD:
+    panel:
+      slot: 16
+      title: "&e&l*&6&l* &e&lSHIELD LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out who changed shield times!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho changed shield times"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: TNT
+      data: 0
+      url: "http://textures.minecraft.net/texture/e36e94f6c34a35465fce4a90f2e25976389eb9709a12273574ff70fd4daa6852"
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eTime: &f<time-start><time-start-marker> - <time-end><time-end-marker>"
+        - "&6&l* &eDate: &f<date> &fago"
+  BANK:
+    panel:
+      slot: 11
+      title: "&e&l*&6&l* &e&lBANK LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out who withdrew from the bank!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho withdrew from the bank"
+        - "&e&l* &fWho deposited to the bank"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: GOLD_INGOT
+      data: 0
+      url: "http://textures.minecraft.net/texture/e36e94f6c34a35465fce4a90f2e25976389eb9709a12273574ff70fd4daa6852"
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eAmount: &f$<amount>"
+        - "&6&l* &eStatus: &f<status>"
+        - "&6&l* &eDate: &f<date> &fago"
+  INVITE:
+    panel:
+      slot: 12
+      title: "&e&l*&6&l* &e&lINVITE LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out who invited who!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho invited"
+        - "&e&l* &fWho deinvited"
+        - "&e&l* &fWho invited an alt"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: BOOK
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eVictim &f<victim>"
+        - "&6&l* &eStatus &f<status>"
+        - "&6&l* &eType: &f<type>"
+        - "&6&l* &eDate: &f<date> &fago"
+  CLAIM:
+    panel:
+      slot: 13
+      title: "&e&l*&6&l* &e&lCLAIM LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out who claimed and unclaimed!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho claimed &7(line, single, radius)"
+        - "&e&l* &fWho unclaimed &7(all, radius)"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: GOLD_SPADE
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eAction: &f<status>"
+        - "&6&l* &eAmount: &f<amount>"
+        - "&6&l* &eDate: &f<date> &fago"
+  PERMISSION:
+    panel:
+      slot: 14
+      title: "&e&l*&6&l* &e&lPERMISSION LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out who changed the faction"
+        - "&7role permissions!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho's the editor"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: DIODE
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eRole: &f<role>"
+        - "&6&l* &ePermission: &f$<permission>"
+        - "&6&l* &eAccess: &f<access>"
+        - "&6&l* &eDate: &f<date> &fago"
+        - ""
+        - "&eClick On Me&f to view the logs"
+  CHEST:
+    panel:
+      slot: 15
+      title: "&e&l*&6&l* &e&lCHEST LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out placed and took items!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho placed items"
+        - "&e&l* &fWho took items"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: CHEST
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eAction: &f<status>"
+        - "&6&l* &eAmount: &f$<amount>"
+        - "&6&l* &eDate: &f<date> &fago"
+        - ""
+        - "&6&lLOGGED ITEM NAME:"
+        - "<title>"
+        - "<lore>"
+  ROTATION:
+    panel:
+      slot: 20
+      title: "&e&l*&6&l* &e&lROTATION LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out all about rotations!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho joined"
+        - "&e&l* &fWho left"
+        - "&e&l* &fWho got kicked"
+        - "&e&l* &fWho got banned"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: STONE
+      data: 0
+      url: "http://textures.minecraft.net/texture/3a457e9b675ae8e3afa45fd9e93821026001d509a9fa98181c3e8ecaab86d32d"
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eReason: &f<reason>"
+        - "&6&l* &eGroup: &f<group>"
+        - "&6&l* &eVictim: &f<victim>"
+        - "&6&l* &eDate: &f<date> &fago"
+  DRAIN:
+    panel:
+      slot: 21
+      title: "&e&l*&6&l* &e&lDRAIN LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out all about who took money!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho drained"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: BUCKET
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eVictim: &f<victim>"
+        - "&6&l* &eAmount: &f$<amount>"
+        - "&6&l* &eDate: &f<date> &fago"
+  ROLE:
+    panel:
+      slot: 22
+      title: "&e&l*&6&l* &e&lROLE LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out who changed roles!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho changed faction roles"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: ENCHANTED_BOOK
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eVictim: &f<victim>"
+        - "&6&l* &eRole: &f<role>"
+        - "&6&l* &eDate: &f<date> &fago"
+  SPAWNER:
+    panel:
+      slot: 23
+      title: "&e&l*&6&l* &e&lSPAWNER LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out who placed or mined"
+        - "&7spawners in claimed land!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho placed a spawner"
+        - "&e&l* &fWho mined a spawner"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: MOB_SPAWNER
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eLocation: &7X:&f<x> &7Y:&f<y> &7Z:&f<z>"
+        - "&6&l* &eWorld: <world>"
+        - "&6&l* &eSpawner: &f<entity>"
+        - "&6&l* &eDate: &f<date> &fago"
+  TNT:
+    panel:
+      slot: 24
+      title: "&e&l*&6&l* &e&lTNT LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Find out all about the tnt bank!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho withdrew TNT"
+        - "&e&l* &fWho deposited TNT"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: TNT
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eStatus: &f<status>"
+        - "&6&l* &eAmount: &f<amount>"
+        - "&6&l* &eDate: &f<date> &fago"
+  CREDIT:
+    panel:
+      slot: -1
+      title: "&6&lINFO:"
+      lore:
+        - ""
+        - "&7Find out who spent the credits"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho spent credits"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: EMERALD
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &ePlayer: &f<player>"
+        - "&6&l* &eAmount: &f<amount>"
+        - "&6&l* &eDate: &f<date> &fago"
+  RAID:
+    panel:
+      slot: 25
+      title: "&e&l*&6&l* &e&lRAID LOGS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Review faction raid logs!"
+        - ""
+        - "&6&l* &e&lLogs: &f<amount-logged>x"
+        - ""
+        - "&6&lLOGGED INFO:"
+        - "&e&l* &fWho raided"
+        - "&e&l* &fWho got raided"
+        - "&e&l* &fValue lost during a raid"
+        - ""
+        - "&eClick On Me&f to view the logs"
+      material: DISPENSER
+      data: 0
+      url: ""
+    log-item:
+      title: "&6&lINFO:"
+      lore:
+        - "&6&l* &eRaider: &f<raider>"
+        - "&6&l* &eVictim: &f<raidee>"
+        - "&6&l* &eValue: &c-&2$&a<amount>"
+        - "&6&l* &eDate: &f<date> &fago"
+      material: TNT
+      data: 0
+      url: ""
+
+#
+# Faction Upgrade Settings
+#
+upgrade-settings:
+  enabled: true
+  vault: true # default is points
+  upgrade-menu:
+    title: "&6Upgrade Menu"
+    rows: 4
+    FILL:
+      title: ""
+      lore: [ ]
+      material: STAINED_GLASS_PANE
+      data: 15
+      url: ""
+    upgrades:
+      multipliers:
+        CROPS:
+          slot: 10
+          title: "&e&l*&6&l* &e&lCROP UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current crop increase drops &e<current-multiplier>x"
+            - "&7Increase your crop drops by &e<next-multiplier>x"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: SUGAR_CANE
+          data: 0
+          url: ""
+          levels:
+            0:
+              multiplier: 1.0
+              chance: 100.0
+              cost: 0
+            1:
+              multiplier: 1.2
+              chance: 100.0
+              cost: 100
+            2:
+              multiplier: 1.5
+              chance: 100.0
+              cost: 350
+            3:
+              multiplier: 2.0
+              chance: 100.0
+              cost: 500
+        EXP:
+          slot: 11
+          title: "&e&l*&6&l* &e&lEXP UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current exp increase drop &e<current-multiplier>x"
+            - "&7Increase your exp drop by &e<next-multiplier>x"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: EXP_BOTTLE
+          data: 0
+          url: ""
+          levels:
+            0:
+              multiplier: 1.0
+              chance: 100.0
+              cost: 0
+            1:
+              multiplier: 1.2
+              chance: 100.0
+              cost: 100
+            2:
+              multiplier: 1.5
+              chance: 100.0
+              cost: 150
+            3:
+              multiplier: 2.0
+              chance: 100.0
+              cost: 200
+        SPAWNER:
+          slot: 12
+          title: "&e&l*&6&l* &e&lSPAWNER UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current mob increase spawning &e<current-multiplier>x"
+            - "&7Increase your mob spawning by &e<next-multiplier>x"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: MOB_SPAWNER
+          data: 0
+          url: ""
+          levels:
+            0:
+              multiplier: 1.0
+              chance: 100.0
+              cost: 0
+            1:
+              multiplier: 1.2
+              chance: 100.0
+              cost: 100
+            2:
+              multiplier: 1.5
+              chance: 100.0
+              cost: 150
+            3:
+              multiplier: 2.0
+              chance: 100.0
+              cost: 300
+        MMCO:
+          slot: 13
+          title: "&e&l*&6&l* &e&lMCMMO UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current mcmmo exp increase gain &e<current-multiplier>x"
+            - "&7Increase your mcmmo exp gain by &e<next-multiplier>x"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: DIAMOND_PICKAXE
+          data: 0
+          url: ""
+          levels:
+            0:
+              multiplier: 1.0
+              chance: 100.0
+              cost: 0
+            1:
+              multiplier: 1.2
+              chance: 100.0
+              cost: 100
+            2:
+              multiplier: 1.5
+              chance: 100.0
+              cost: 150
+            3:
+              multiplier: 2.0
+              chance: 100.0
+              cost: 300
+        OUTPOST_CAPTURE_SPEED:
+          slot: 14
+          title: "&e&l*&6&l* &e&lOUTPOST CAPTURE UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current capture increase speed &e<current-multiplier>x"
+            - "&7Increase capture speed by &e<next-multiplier>x"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: DIAMOND_SWORD
+          data: 0
+          url: ""
+          levels:
+            0:
+              multiplier: 1.0
+              chance: 100.0
+              cost: 0
+            1:
+              multiplier: 1.0
+              chance: 75.0
+              cost: 150
+            2:
+              multiplier: 2.0
+              chance: 50.0
+              cost: 250
+        TOKEN_BOOSTER:
+          slot: 15
+          title: "&e&l*&6&l* &e&lTOKEN BOOSTER UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current capture increase &e<current-multiplier>x"
+            - "&7Increase capture speed by &e<next-multiplier>x"
+            - "&7with a chance of &e<chance>%"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: DOUBLE_PLANT
+          data: 0
+          url: ""
+          levels:
+            0:
+              multiplier: 1.0
+              chance: 100.0
+              cost: 0
+            1:
+              multiplier: 1.2
+              chance: 75.0
+              cost: 250
+            2:
+              multiplier: 1.5
+              chance: 50.0
+              cost: 500
+      expansions:
+        TNT_STORAGE:
+          slot: 16
+          title: "&e&l*&6&l* &e&lTNT STORAGE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current tnt storage &e<current-expansion>"
+            - "&7Increase tnt storage by &e<next-expansion>"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: TNT
+          data: 0
+          url: ""
+          levels:
+            0:
+              amount: 100
+              cost: 100
+            1:
+              amount: 200
+              cost: 250
+            2:
+              amount: 250
+              cost: 500
+        CHEST_STORAGE:
+          slot: 19
+          title: "&e&l*&6&l* &e&lCHEST STORAGE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current chest storage &e<current-expansion>"
+            - "&7Increase chest storage by &e<next-expansion>"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: CHEST
+          data: 0
+          url: ""
+          levels:
+            0:
+              amount: 1
+              cost: 100
+            1:
+              amount: 2
+              cost: 200
+            2:
+              amount: 3
+              cost: 300
+        ALTS:
+          slot: 20
+          title: "&e&l*&6&l* &e&lALT AMOUNT UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current alt amount &e<current-expansion>"
+            - "&7Increase your alt amount by &e<next-expansion>"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: BOOK
+          data: 0
+          url: ""
+          levels:
+            0:
+              amount: 5
+              cost: 25
+            1:
+              amount: 10
+              cost: 50
+            2:
+              amount: 15
+              cost: 75
+        SAND_ALTS:
+          slot: 21
+          title: "&e&l*&6&l* &e&lSAND BOT UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current sand bot limit &e<current-expansion>"
+            - "&7Increase your sand bot amount by &e<next-expansion>"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: SAND
+          data: 0
+          url: ""
+          levels:
+            0:
+              amount: 1
+              cost: 100
+            1:
+              amount: 3
+              cost: 200
+            2:
+              amount: 5
+              cost: 300
+        CHUNK_LOADER:
+          slot: 23
+          title: "&e&l*&6&l* &e&lCHUNK LOADER UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current chunk loader limit &e<current-expansion>"
+            - "&7Increase your chunk loader amount by &e<next-expansion>"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: BEACON
+          data: 0
+          url: ""
+          levels:
+            0:
+              amount: 5
+              cost: 10
+            1:
+              amount: 7
+              cost: 15
+            2:
+              amount: 10
+              cost: 20
+        SHIELD_TIME:
+          slot: 24
+          title: "&e&l*&6&l* &e&lSHIELD UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current shield time &e<current-expansion>"
+            - "&7Increase your shield time by &e<next-expansion>"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: ENDER_PORTAL_FRAME
+          data: 0
+          url: "http://textures.minecraft.net/texture/43093a5b77642d4092112f46ea68140fb5ae04bbd231cda1066a04c18b89c94e"
+          levels:
+            0:
+              amount: 5
+              cost: 100
+            1:
+              amount: 10
+              cost: 200
+            2:
+              amount: 20
+              cost: 300
+        WARPS:
+          slot: 25
+          title: "&e&l*&6&l* &e&lWARP UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current warp amount &e<current-expansion>"
+            - "&7Increase the amount of warps by &e<next-expansion>"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: ENDER_PEARL
+          data: 0
+          url: ""
+          levels:
+            0:
+              amount: 10
+              cost: 10
+            1:
+              amount: 15
+              cost: 30
+        RAID_CLAIMS:
+          slot: 22
+          title: "&e&l*&6&l* &e&lRAID CLAIMS UPGRADE &8&l┃ &e&l&n<current-level>&r &6&l*&e&l*"
+          lore:
+            - ""
+            - "&7Current raid claims amount &e<current-expansion>"
+            - "&7Increase the amount of raid claims by &e<next-expansion>"
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eMax Level: &f<max-level>"
+            - "&6&l* &eCurrent Level: &f<current-level>"
+            - "&6&l* &eCost: &f<cost> points"
+            - "&r"
+            - "&e&lClick On Me&f to upgrade"
+          material: PAPER
+          data: 0
+          url: ""
+          levels:
+            0:
+              amount: 2
+              cost: 500
+            1:
+              amount: 3
+              cost: 1000
+
+#
+# Faction Roster Settings
+#
+roster-settings:
+  max-kicks: 5
+  rotation-cooldown: 86400000
+  max-roster-members: 15
+  roster-menu:
+    title: "&6Faction Roster"
+    roster-item:
+      title: "&6&l<player>"
+      lore:
+        - ""
+        - "&6&lINFO:"
+        - "&6&l* &eDate: &f<time>"
+    fill:
+      title: ""
+      lore: [ ]
+      material: "STAINED_GLASS_PANE"
+      data: 15
+      url: ""
+
+#
+# Disguise Settings
+#
+disguise-settings:
+  title: "&6Faction Disguises"
+  rows: 4
+  name: "&a<player>"
+  undisguise:
+    slot: 31
+    title: "&c&lUndisguise"
+    lore:
+      - "&7"
+      - "&7Undisguise from being a mob!"
+      - "&7"
+      - "&eClick On Me&f to remove your disguise"
+    material: NETHER_STAR
+    data: 0
+    url: ""
+  disguises:
+    ZOMBIE:
+      slot: 10
+      title: "&e&l*&6&l* &e&lZOMBIE DISGUISE &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&7Disguise as a &eZombie&f!"
+        - ""
+        - "&eClick On Me&f to active this disguise"
+      material: STONE
+      data: 0
+      url: "https://textures.minecraft.net/texture/56fc854bb84cf4b7697297973e02b79bc10698460b51a639c60e5e417734e11"
+    SKELETON:
+      slot: 11
+      title: "&e&l*&6&l* &e&lSKELETON DISGUISE &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&7Disguise as a &eSkeleton&f!"
+        - ""
+        - "&eClick On Me&f to active this disguise"
+      material: STONE
+      data: 0
+      url: "https://textures.minecraft.net/texture/301268e9c492da1f0d88271cb492a4b302395f515a7bbf77f4a20b95fc02eb2"
+    CREEPER:
+      slot: 12
+      title: "&e&l*&6&l* &e&lCREEPER DISGUISE &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&7Disguise as a &eCreeper&f!"
+        - ""
+        - "&eClick On Me&f to active this disguise"
+      material: STONE
+      data: 0
+      url: "https://textures.minecraft.net/texture/f4254838c33ea227ffca223dddaabfe0b0215f70da649e944477f44370ca6952"
+    ENDERMAN:
+      slot: 13
+      title: "&e&l*&6&l* &e&lENDERMAN DISGUISE &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&7Disguise as a &eEnderman&f!"
+        - ""
+        - "&eClick On Me&f to active this disguise"
+      material: STONE
+      data: 0
+      url: "https://textures.minecraft.net/texture/96c0b36d53fff69a49c7d6f3932f2b0fe948e032226d5e8045ec58408a36e951"
+    BLAZE:
+      slot: 14
+      title: "&e&l*&6&l* &e&lBLAZE DISGUISE &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&7Disguise as a &eBlaze&f!"
+        - ""
+        - "&eClick On Me&f to active this disguise"
+      material: STONE
+      data: 0
+      url: "https://textures.minecraft.net/texture/b78ef2e4cf2c41a2d14bfde9caff10219f5b1bf5b35a49eb51c6467882cb5f0"
+    SLIME:
+      slot: 15
+      title: "&e&l*&6&l* &e&lSLIME DISGUISE &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&7Disguise as a &eSlime&f!"
+        - ""
+        - "&eClick On Me&f to active this disguise"
+      material: STONE
+      data: 0
+      url: "http://textures.minecraft.net/texture/895aeec6b842ada8669f846d65bc49762597824ab944f22f45bf3bbb941abe6c"
+    VILLAGER:
+      slot: 16
+      title: "&e&l*&6&l* &e&lVILLAGER DISGUISE &6&l*&e&l*"
+      lore:
+        - "&r"
+        - "&7Disguise as a &eVillager&f!"
+        - ""
+        - "&eClick On Me&f to active this disguise"
+      material: STONE
+      data: 0
+      url: "http://textures.minecraft.net/texture/41b830eb4082acec836bc835e40a11282bb51193315f91184337e8d3555583"
+
+#
+# Faction Settings
+#
+player-settings:
+  title: "&6Personal Settings"
+  rows: 3
+  settings:
+    GUI:
+      slot: 10
+      title: "&e&l*&6&l* &e&lGUI SUPPORT &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Toggling this module will toggle"
+        - "&7all GUIs for commands that support"
+        - "&7the GUI function!"
+        - ""
+        - "&6&l* &eStatus: &f<status>"
+        - "&r"
+        - "&e&lClick On Me&f to toggle this module"
+      material: CHEST
+      data: 0
+      url: ""
+    TRACKER:
+      slot: 12
+      title: "&e&l*&6&l* &e&lARMOR RELATION &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Toggling this module will display"
+        - "&7all nearby players with colored"
+        - "&7armor based on your relations with"
+        - "&7the faction"
+        - ""
+        - "&6&l* &eStatus: &f<status>"
+        - "&r"
+        - "&e&lClick On Me&f to toggle this module"
+      material: DIAMOND_HELMET
+      data: 0
+      url: ""
+    SPAWNER_MONITOR:
+      slot: 14
+      title: "&e&l*&6&l* &e&lSPAWNER ALERTS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Toggling this module will toggle"
+        - "&7spawner break/place notifications"
+        - ""
+        - "&6&l* &eStatus: &f<status>"
+        - "&r"
+        - "&e&lClick On Me&f to toggle this module"
+      material: MOB_SPAWNER
+      data: 0
+      url: ""
+    LOGIN_MONITOR:
+      slot: 16
+      title: "&e&l*&6&l* &e&lLOGIN ALERTS &6&l*&e&l*"
+      lore:
+        - ""
+        - "&7Toggling this module will toggle"
+        - "&7player join/leave notifications"
+        - ""
+        - "&6&l* &eStatus: &f<status>"
+        - "&r"
+        - "&e&lClick On Me&f to toggle this module"
+      material: BOOK
+      data: 0
+      url: ""
+
+#
+# TNTFill Settings
+#
+tntfill-settings:
+  title: "&6TNT Fill Menu"
+  rows: 1
+  max-radius: 60
+  radius-increments: 5
+  strict-fill: true
+  tnt-fill:
+    slot: 2
+    title: "&e&l*&6&l* &e&lTNT FILL &6&l*&e&l*"
+    lore:
+      - "&6&l* &eAmount: &f<amount>x TNT"
+      - "&r"
+      - "&6&lCONTROLS:"
+      - "&eMidde-Click: &fChange the fill amount"
+      - "&eLeft-Click: &fFill the dispensers with TNT"
+      - "&eRight-Click: &fRemove TNT from the dispensers"
+    material: TNT
+    data: 0
+    url: ""
+  fill-radius:
+    slot: 4
+    title: "&e&l*&6&l* &e&lTNT RADIUS &6&l*&e&l*"
+    lore:
+      - "&6&lINFO:"
+      - "&6&l* &eRadius: &f<amount>"
+      - "&6&l* &eMax Radius: &f<max>"
+      - "&6&l* &eMin Radius: &f<min>"
+      - "&r"
+      - "&6&lCONTROLS:"
+      - "&eMidde-Click: &fReset amount"
+      - "&eLeft-Click: &fIncrease Radius"
+      - "&eRight-Click: &fDecrease Radius"
+    material: DISPENSER
+    data: 0
+    url: ""
+  vault-info:
+    slot: 6
+    title: "&e&l*&6&l* &e&lTNT VAULT &6&l*&e&l*"
+    lore:
+      - ""
+      - "&7View information about your TNT"
+      - "&7live from this item!"
+      - ""
+      - "&6&lINFO:"
+      - "&6&l* &eBalance: &f<balance>"
+      - "&6&l* &eRadius: &f<radius>"
+      - "&6&l* &eFill Amount: &f<fill>"
+    material: CHEST
+    data: 0
+    url: ""
+
+
+#
+# Faciton Vault Settings
+#
+vault-settings:
+  main:
+    title: "&6Faction Vaults"
+    rows: 3
+    money:
+      slot: 11
+      title: "&e&l*&6&l* &e&lBALANCE VAULT &6&l*&e&l*"
+      lore:
+        - ""
+        - "&6&l* &eFaction Balance: &f$<amount>"
+        - "&7"
+        - "&e&lClick On Me &fto access the vault!"
+      material: GOLD_INGOT
+      data: 0
+      url: ""
+    exp:
+      slot: 13
+      title: "&e&l*&6&l* &e&lEXP VAULT &6&l*&e&l*"
+      lore:
+        - ""
+        - "&6&l* &eFaction EXP: &f<amount>"
+        - "&7"
+        - "&e&lClick On Me &fto access the vault!"
+      material: EXP_BOTTLE
+      data: 0
+      url: ""
+    tnt:
+      slot: 15
+      title: "&e&l*&6&l* &e&lTNT VAULT &6&l*&e&l*"
+      lore:
+        - ""
+        - "&6&l* &eFaction Balance: &f<amount>x"
+        - "&7"
+        - "&e&lClick On Me &fto access the vault!"
+      material: TNT
+      data: 0
+      url: ""
+  vault:
+    title: ""
+    rows: 3
+    exp-increments: 10
+    money-increments: 100
+    tnt-increments: 100
+    info:
+      slot: 4
+      title: "&e&l*&6&l* &e&l<type> VAULT &6&l*&e&l*"
+      lore:
+        - ""
+        - "&6&l* &eTotal Amount: &f<amount>"
+        - "&6&l* &eHeld Amount: &f<current>"
+        - "&r"
+        - "&6&lCONTROLS:"
+        - "&eLeft-Click &fdeposit all"
+        - "&eRight-Click &fwithdraw all"
+    add:
+      slot: 10
+      title: "&a&l+<increments>"
+      lore:
+        - "&6&l* &eTotal Amount: &f<amount>"
+        - "&6&l* &eHeld Amount: &f<current>"
+      material: STONE
+      data: 0
+      url: "http://textures.minecraft.net/texture/d67470a0c18f6851e914353719e795877d29b3252f7e6bd4a1b865765bd74feb"
+    remove:
+      slot: 11
+      title: "&c&l-<increments>"
+      lore:
+        - "&6&l* &eTotal Amount: &f<amount>"
+        - "&6&l* &eHeld Amount: &f<current>"
+      material: STONE
+      data: 0
+      url: "http://textures.minecraft.net/texture/86d35a963d5987894b6bc214e328b39cd2382426ff9c8e082b0b6a6e044d3a3"
+    withdraw:
+      slot: 15
+      title: "&e&l*&6&l* &e&lWITHDRAW &6&l*&e&l*"
+      lore:
+        - "&6&l* &eTotal Amount: &f<amount>"
+        - "&6&l* &eHeld Amount: &f<current>"
+      material: STAINED_GLASS_PANE
+      data: 14
+      url: ""
+    deposit:
+      slot: 16
+      title: "&e&l*&6&l* &e&lDEPOSIT &6&l*&e&l*"
+      lore:
+        - "&6&l* &eTotal Amount: &f<amount>"
+        - "&6&l* &eHeld Amount: &f<current>"
+      material: STAINED_GLASS_PANE
+      data: 5
+      url: ""
+
+#
+# Faction Raid Timer Settings
+#
+raidtimer-settings:
+  raid-controler-item:
+    title: "&r"
+    lore:
+      - "&eRaider : &c<raider>"
+      - "&eVictim : &b<victim>"
+      - "&eTime Left : &a<time-left>"
+      - "&eCurrent Phase : &a<phase>"
+      - "&r"
+      - "&7&oClick here to disable raid timer"
+    material: TNT
+    data: 0
+    url: ""
+  raid-cooldown: 300000
+  phases:
+    30:
+      phase-name: "3"
+      restrictions:
+        - "GENBUCKETS"
+        - "PRINTING"
+        - "FLYING"
+    15:
+      phase-name: "2"
+      restrictions:
+        - "GENBUCKETS"
+        - "PRINTING"
+    5:
+      phase-name: "1"
+      restrictions:
+        - "GENBUCKETS"
+  raid-timer-initiate:
+    - "&7Your faction &7(&e<faction>&7) has started"
+    - "&7a raid timer!"
+    - "&r"
+    - "&6&l* &e&lPhase: &f<phase>"
+    - "&6&l* &e&lVictim: &f<victim>"
+  raid-info:
+    - "&7Your faction is currently raiding..."
+    - "&r"
+    - "&6&l* &e&lTime Left: &c<time>"
+    - "&6&l* &e&lPhase: &f<phase>"
+    - "&6&l* &e&lVictim: &f<victim>"
+  raid-timer-end:
+    - "&c&lCurrent Raid Timer for &n<victim>&c&l has eneded"
+
+#
+# Faction Raid Claims
+#
+
+raidclaims-settings:
+  menu:
+    rows: 1
+    title: "&cRaid Claims"
+  cost: 1000000
+  timer: 3600
+  radius: 9
+  information-item:
+    title: "&c&lInformation"
+    lore:
+      - ""
+      - "&7Raid claims must be set if you are wanting to use &c/f tnt"
+      - "&7the chunks will automatically be &cunclaimed&7 when the timer &cexpires"
+      - "&7if you wish to &cno-longer&7 pay for the raid claim"
+      - ""
+      - "&7they cost &c<cost> &7and are a radius of &c<radius> &7by &c<radius>"
+    material: PAPER
+    data: 0
+    url: ""
+    slot: 0
+  claim-item:
+    title: "&c&lPurchase a Claim"
+    lore:
+      - ""
+      - "&7Covert the area you are standing currently into a"
+      - "&cRaid Claim &7by clicking this button to purchase"
+      - ""
+      - "&7Cost: &c<cost> &7for 1 hour"
+      - "&7Size: &c<radius> &7by &c<radius> &7chunks"
+    material: TNT
+    data: 0
+    url: ""
+    slot: 4
+  list-item:
+    title: "&c&lRaid Claims"
+    lore:
+      - ""
+      - "&7all of your current raid claims are listed here"
+      - "&7you currently have &c<amount>&7 of raid claims"
+      - ""
+      - "&c&lClaims"
+      - "&c* &7<claims>"
+    material: PAPER
+    data: 0
+    url: ""
+    slot: 8
+  claim-showcase:
+    title: "&c&lRaid Claim"
+    lore:
+      - ""
+      - "X: <x>"
+      - "Y: <y>"
+      - "Z: <z>"
+      - "World: &7<world>"
+    material: PAPER
+    data: 0
+    url: ""
+    slot: 8
+
+#
+# Faction Strikes Settings
+#
+strike-settings:
+  title: "Strike Info"
+  info-item:
+    title: "&6&lINFO:"
+    lore:
+      - "&6&l* &ePunisher: &f<punisher>"
+      - "&6&l* &eReason: &f<reason>"
+      - "&6&l* &eDate: &f<date> &fago"
+    material: PAPER
+    data: 0
+    url: ""
+  fill-item:
+    title: ""
+    lore: [ ]
+    material: "STAINED_GLASS_PANE"
+    data: 15
+    url: ""
+
+#
+# Faction Shield Settings
+#
+shield-settings:
+  pending-time: 60000
+  shield-confirm:
+    title: "&e&lCONFIRM SHIELD CHANGE"
+    lore:
+      - ""
+      - "&f<start><start-marker> &6&l»» &f<end><end-marker>"
+      - "&r"
+      - "&6&l* &eCurrent Time: &f<time-hour>:<time-minutes>:<time-secs><time-marker>"
+      - "&r"
+      - "&6&l* &eDuration: &f<duration> Hours"
+    material: WATCH
+    data: 0
+    url: ""
+  shield-showcase:
+    title: "&e&lCLICK TO CHANGE"
+    lore:
+      - "&e<start><start-marker> &6&l»» &e<end><end-marker> &8(&e<duration> Hours Total&8)"
+      - ""
+      - "&6&l* &eCurrent Time: &f<time-hour>:<time-minutes>:<time-secs><time-marker>"
+    material: STAINED_GLASS_PANE
+    data: 8
+    url: ""
+  shield-set:
+    title: "&e&lSET SHIELD"
+    lore:
+      - ""
+      - "&e<start><start-marker> &6&l»» &e<end><end-marker>"
+      - ""
+      - "&6&l* &eCurrent Time: &f<time-hour>:<time-minutes>:<time-secs><time-marker>"
+      - "&6&l* &eShield Status: <status>"
+    material: STAINED_GLASS_PANE
+    data: 5
+    url: ""
+  shield-pending:
+    title: "&e&lPENDING SHIELD"
+    lore:
+      - ""
+      - "&6&l* &ePending: <start><start-marker> &6&l»» &e<end><end-marker>"
+      - ""
+      - "&6&l* &eCurrent Time: &f<time-hour>:<time-minutes>:<time-secs><time-marker>"
+    material: STAINED_GLASS_PANE
+    data: 4
+    url: ""
+  shield-info:
+    slot: 48
+    no-pending:
+      title: "&c&lNO PENDING SHIELD CHANGES"
+      lore:
+        - ""
+        - "&cThere are no pending change to"
+        - "&cyour faction's shields"
+      material: WATCH
+      data: 0
+      url: ""
+    shield-exist:
+      title: "&e&lCURRENT SHIELD TIME"
+      lore:
+        - ""
+        - "&e<start><start-marker> &6&l»» &e<end><end-marker>"
+        - "&r"
+        - "&6&l* &eShield Status: <status>"
+      material: WATCH
+      data: 0
+      url: ""
+    shield-pending:
+      title: "&c&lPENDING SHIELD CHANGES"
+      lore:
+        - ""
+        - "&6&l* &eTime Left: &f<time-left>"
+        - "&cThere is a pending change"
+        - ""
+        - "&e<start><start-marker> &6&l»» &e<end><end-marker>"
+      material: WATCH
+      data: 0
+      url: ""
+  shield-disable:
+    slot: 50
+    title: "&c&lDISABLE"
+    lore:
+      - ""
+      - "&7You will need to wait &c1 day &7to"
+      - "&7reactivate your faction shield."
+      - ""
+      - "&e&lClick&f to disable your shield"
+    material: REDSTONE_BLOCK
+    data: 0
+    url: ""
+
+#
+# Faction Perm Setting
+#
+perm-settings:
+  title: '&6Faction Permissions'
+  indicator-item:
+    allow:
+      title: "&6Access: &aAllow"
+      lore: [ ]
+      material: STAINED_GLASS_PANE
+      data: 5
+      url: ""
+    deny:
+      title: "&6Access: &cDeny"
+      lore: [ ]
+      material: STAINED_GLASS_PANE
+      data: 14
+      url: ""
+  permission-items:
+    ALT_LIST:
+      slot: 0
+      title: '&e&lAlt List'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fManage the Faction Alts'
+        - ''
+      material: SKULL_ITEM
+      data: 0
+      url: ""
+    ALT_INVITE:
+      slot: 1
+      title: '&e&lAlt Invite'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fInvite/Deinvite Alts'
+        - ''
+      material: BOOK
+      data: 0
+      url: ""
+    ALT_OPEN_CLOSE:
+      slot: 2
+      title: '&e&lAlt Faction Status'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fManage Alt Open Status'
+        - ''
+      material: WOOL
+      data: 5
+      url: ""
+    ALT_KICK:
+      slot: 3
+      title: '&e&lAlt Kick'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fKick Faction Alts'
+        - ''
+      material: WOOL
+      data: 14
+      url: ""
+    BANK_DEPOSIT:
+      slot: 4
+      title: '&e&lBank Deposit'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fDeposit money into the vault'
+        - ''
+      material: GOLD_INGOT
+      data: 0
+      url: ""
+    BANK_WITHDRAW:
+      slot: 5
+      title: '&e&lBank Withdraw'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fWithdraw money from the vault'
+        - ''
+      material: IRON_INGOT
+      data: 0
+      url: ""
+    CLAIM:
+      slot: 6
+      title: '&e&lClaim'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fClaim faction land'
+        - ''
+      material: GRASS
+      data: 0
+      url: ""
+    UNCLAIM:
+      slot: 7
+      title: '&e&lUnclaim'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fUnclaim faction land'
+        - ''
+      material: NETHERRACK
+      data: 0
+      url: ""
+    DESCRIPTION:
+      slot: 8
+      title: '&e&lDescription'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fSet the faction description'
+        - ''
+      material: SIGN
+      data: 0
+      url: ""
+    DISBAND:
+      slot: 9
+      title: '&e&lDisband'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fDisband the faction'
+        - ''
+      material: BARRIER
+      data: 0
+      url: ""
+    OPEN:
+      slot: 10
+      title: '&e&lFaction Status'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fManage faction open status'
+        - ''
+      material: ENCHANTED_BOOK
+      data: 0
+      url: ""
+    TAG:
+      slot: 11
+      title: '&e&lFaction Tag'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fManage the faction tag'
+        - ''
+      material: NAME_TAG
+      data: 0
+      url: ""
+    HOME:
+      slot: 12
+      title: '&e&lFaction Home'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fTeleport to your faction home'
+        - ''
+      material: DIAMOND_HELMET
+      data: 0
+      url: "http://textures.minecraft.net/texture/cf7cdeefc6d37fecab676c584bf620832aaac85375e9fcbff27372492d69f"
+    SETHOME:
+      slot: 13
+      title: '&e&lSet Faction Home'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fSet your faction home'
+        - ''
+      material: ENDER_PORTAL_FRAME
+      data: 0
+      url: ""
+    DELHOME:
+      slot: 14
+      title: '&e&lDelete Faction Home'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fDelete your faction home'
+        - ''
+      material: STAINED_CLAY
+      data: 14
+      url: ""
+    WARP:
+      slot: 15
+      title: '&e&lWarps'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fTeleport to your faction warps'
+        - ''
+      material: ENDER_PEARL
+      data: 0
+      url: ""
+    SETWARP:
+      slot: 16
+      title: '&e&lSet Warps'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fSet your faction warps'
+        - ''
+      material: EYE_OF_ENDER
+      data: 0
+      url: ""
+    BUILD:
+      slot: 17
+      title: '&e&lBuilding'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fBuilding in faction claims'
+        - ''
+      material: BRICK
+      data: 0
+      url: ""
+    DESTROY:
+      slot: 18
+      title: '&e&lDestroy'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fDestroy in faction claims'
+        - ''
+      material: DIAMOND_PICKAXE
+      data: 0
+      url: ""
+    INVITE:
+      slot: 19
+      title: '&e&lInvite Players'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fInvite players to your faction'
+        - ''
+      material: DIAMOND_HELMET
+      data: 0
+      url: ""
+    KICK:
+      slot: 20
+      title: '&e&lKick Members'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fKick members from your faction'
+        - ''
+      material: BLAZE_POWDER
+      data: 0
+      url: ""
+    PROMOTE:
+      slot: 21
+      title: '&e&lPromote/Demote Members'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fPromote/Demote your faction members'
+        - ''
+      material: EMERALD
+      data: 0
+      url: ""
+    BAN:
+      slot: 22
+      title: '&e&lBan'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fBan players from your faction'
+        - ''
+      material: WOOD_AXE
+      data: 0
+      url: ""
+    SHIELDS:
+      slot: 23
+      title: '&e&lShields'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fManage your faction shields'
+        - ''
+      material: WATCH
+      data: 0
+      url: ""
+    DRAIN:
+      slot: 24
+      title: '&e&lDrain'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fDrain members from your faction'
+        - ''
+      material: BUCKET
+      data: 0
+      url: ""
+    PERMISSION:
+      slot: 25
+      title: '&e&lPermission'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fManage permissions in your faction'
+        - ''
+      material: GOLD_SPADE
+      data: 0
+      url: ""
+    VAULT:
+      slot: 26
+      title: '&e&lVault'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fAccess your faction vault'
+        - ''
+      material: ENDER_CHEST
+      data: 0
+      url: ""
+    FLY:
+      slot: 27
+      title: '&e&lFly'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fFly in your faction claims'
+        - ''
+      material: FEATHER
+      data: 0
+      url: ""
+    CHEST:
+      slot: 28
+      title: '&e&lChest'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fAccess your faction virtual chest'
+        - ''
+      material: CHEST
+      data: 0
+      url: ""
+    DISGUISE:
+      slot: 29
+      title: '&e&lDisguise'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fManage your faction disguise'
+        - ''
+      material: DIAMOND_HELMET
+      data: 0
+      url: "http://textures.minecraft.net/texture/30fa092f92c5c8e201b8b32a6b4c83d2dc076f199bf7d64e2cbb22c8c13e194d"
+    ROSTER:
+      slot: 30
+      title: '&e&lRoster'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fManage your faction roster'
+        - ''
+      material: BOOK
+      data: 0
+      url: ""
+    SPAWNER_MINE:
+      slot: 31
+      title: '&e&lMine Spawners'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fMine spawners in your faction claims'
+        - ''
+      material: IRON_PICKAXE
+      data: 0
+      url: ""
+    SPAWNER_BUILD:
+      slot: 32
+      title: '&e&lPlace Spawners'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fPlace spawners in your faction claims'
+        - ''
+      material: MOB_SPAWNER
+      data: 0
+      url: ""
+    LEVER:
+      slot: 33
+      title: '&e&lLever'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fUse levers in your faction claims'
+        - ''
+      material: LEVER
+      data: 0
+      url: ""
+    BUTTON:
+      slot: 34
+      title: '&e&lButtons'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fUse buttons in your faction claims'
+        - ''
+      material: STONE_BUTTON
+      data: 0
+      url: ""
+    DOOR:
+      slot: 35
+      title: '&e&lDoor'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fOpen/Close doors in your faction claims'
+        - ''
+      material: WOOD_DOOR
+      data: 0
+      url: ""
+    CONTAINER:
+      slot: 36
+      title: '&e&lContainer'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fOpen contains in your faction claims'
+        - ''
+      material: TRAPPED_CHEST
+      data: 0
+      url: ""
+    AUDIT:
+      slot: 37
+      title: '&e&lAudit Logs'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fView your audit logs'
+        - ''
+      material: FLINT_AND_STEEL
+      data: 0
+      url: ""
+    TNT_FILL:
+      slot: 38
+      title: '&e&lTNT Fill'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fTNT Fill in your faction claims'
+        - ''
+      material: HOPPER
+      data: 0
+      url: ""
+    TNT_DEPOSIT:
+      slot: 39
+      title: '&e&lTNT Deposit'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fDeposit TNT into your faction vault'
+        - ''
+      material: TNT
+      data: 0
+      url: ""
+    TNT_WITHDRAW:
+      slot: 40
+      title: '&e&lTNT Withdraw'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fWithdraw TNT from your faction vault'
+        - ''
+      material: DISPENSER
+      data: 0
+      url: ""
+    FOCUS:
+      slot: 41
+      title: '&e&lFocus'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fTarget players for your faction'
+        - ''
+      material: DISPENSER
+      data: 0
+      url: ""
+    DEFAULT_RANK:
+      slot: 42
+      title: '&e&lDefault Rank'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fSet the default rank'
+        - ''
+      material: DISPENSER
+      data: 0
+      url: ""
+    PAYPAL_SET:
+      slot: 43
+      title: '&e&lPaypal Set'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fSet the paypal for your faction'
+        - ''
+      material: DISPENSER
+      data: 0
+      url: ""
+    DISCORD_SET:
+      slot: 44
+      title: '&e&lDiscord Set'
+      lore:
+        - ''
+        - '&6&lINFO:'
+        - '&fSet the discord for your faction'
+        - ''
+      material: DISPENSER
+      data: 0
+      url: ""
+  special-items:
+    previous:
+      material: PAPER
+      data: 0
+      url: ""
+      title: '&cPrevious Page'
+      lore: [ ]
+    next:
+      material: PAPER
+      data: 0
+      url: ""
+      title: '&aNext Page'
+      lore: [ ]
+    coleader:
+      material: DIAMOND_CHESTPLATE
+      data: 0
+      url: ""
+      title: '&e&lColeader'
+      lore: [ ]
+    moderator:
+      material: IRON_CHESTPLATE
+      data: 0
+      url: ""
+      title: '&e&lModerator'
+      lore: [ ]
+    member:
+      material: GOLD_CHESTPLATE
+      data: 0
+      url: ""
+      title: '&e&lMember'
+      lore: [ ]
+    recruit:
+      material: LEATHER_CHESTPLATE
+      data: 0
+      url: ""
+      title: '&e&lRecruit'
+      lore: [ ]
+    ally:
+      material: DIAMOND_SWORD
+      data: 0
+      url: ""
+      title: '&e&lAlly'
+      lore: [ ]
+    truce:
+      material: IRON_SWORD
+      data: 0
+      url: ""
+      title: '&e&lTruce'
+      lore: [ ]
+  fill-item:
+    material: STAINED_GLASS_PANE
+    data: 15
+    url: ""
+    title: '&c'
+    lore: [ ]
+
+#
+# Faction Inventory Settings
+#
+inventorysee-settings:
+  title: "&6<player>'s Inventory"
+  items:
+    health:
+      title: "&e&lHealth: &f<health>"
+      lore: [ ]
+      material: GOLDEN_APPLE
+      data: 0
+      url: ""
+    hunger:
+      title: "&e&lHunger: &f<hunger>"
+      lore: [ ]
+      material: COOKED_BEEF
+      data: 0
+      url: ""
+
+#
+# Faction Mission Settings
+#
+mission-settings:
+  title: "&6Faction Mission Settings"
+  # FULL, RANDOM
+  style: RANDOM
+  rows: 1
+  blacklisted-materials:
+    - STONE
+  blacklisted-entities:
+    - XPORB
+  fill:
+    title: ""
+    lore: [ ]
+    material: "STAINED_GLASS_PANE"
+    data: 15
+    url: ""
+  disable-button:
+    slot: 8
+    title: "Disable Mission"
+    lore: [ ]
+    material: "BARRIER"
+    data: 0
+    url: ""
+  valid-entities:
+    - "SKELETON"
+    - "ZOMBIE"
+  random:
+    slot: 4
+    title: "&eMISSION PICKER"
+    lore:
+      - ""
+      - "&c&l(!) &cYou currently do not have an"
+      - "&cactive mission"
+      - ""
+      - "&e&lClick&f to pick a random mission!"
+    material: "CHEST"
+    data: 0
+    url: ""
+  missions:
+    1:
+      item:
+        slot: 0
+        name: "&e&l*&6&l* &e&lTrench &6&l*&e&l*"
+        showcase:
+          title: "&e&l*&6&l* &e&lTrench &6&l*&e&l*"
+          lore:
+            - ""
+            - "&6&lINFO:"
+            - "&eMine Stone"
+            - "&r"
+            - "&e&lAMOUNT::"
+            - "&e1 - 10 &fBlocks"
+          material: DIAMOND_PICKAXE
+          data: 0
+          url: ""
+        active:
+          title: "&e&l*&6&l* &e&lTrench &6&l*&e&l*"
+          lore:
+            - ""
+            - "&6&lINFO:"
+            - "&6&l* &eCurrent Status: &f<status>&8/&f<required>"
+            - "&6&l* &eAction: &f<action>"
+            - "&6&l* &eType: &f<type>"
+          material: DIAMOND_PICKAXE
+          data: 0
+          url: ""
+      settings:
+        rewards:
+          - "f points give <faction> 1"
+        max: 10
+        min: 1
+        type: BLOCK_PLACE
+        target: STONE:0
+    2:
+      item:
+        slot: 1
+        showcase:
+          title: "&e&l*&6&l* &e&lDrill &6&l*&e&l*"
+          lore:
+            - "&6&lINFO:"
+            - "&fMine a random chose block"
+            - "&r"
+            - "&6&lAMOUNT:"
+            - "&e1 - 10 &fBlocks"
+          material: HOPPER
+          data: 0
+          url: ""
+        active:
+          title: "&e&l*&6&l* &e&lDrill &6&l*&e&l*"
+          lore:
+            - "&6&lINFO:"
+            - "&6&l* &eCurrent Status: &f<status>&8/&f<required>"
+            - "&6&l* &eAction: &f<action>"
+            - "&6&l* &eType: &f<type>"
+          material: HOPPER
+          data: 0
+          url: ""
+      settings:
+        rewards:
+          - "f points give <faction> 2"
+        max: 10
+        min: 1
+        type: BLOCK_PLACE
+        target: RANDOM
+    3:
+      item:
+        slot: 2
+        showcase:
+          title: "&e&l*&6&l* &e&lFishing &6&l*&e&l*"
+          lore:
+            - "&e&lINFO:"
+            - "&fCatch fish"
+            - "&r"
+            - "&6&lAMOUNT:"
+            - "&f1 - 10"
+          material: RAW_FISH
+          data: 0
+          url: ""
+        active:
+          title: "&e&l*&6&l* &e&lFishing &6&l*&e&l*"
+          lore:
+            - "&6&l* &eCurrent Status: &f<status>&8/&f<required>"
+            - "&6&l* &eAction: &e<action>"
+            - "&6&l* &eType: &e<type>"
+          material: RAW_FISH
+          data: 0
+          url: ""
+      settings:
+        rewards:
+          - "f points give <faction> 2"
+        max: 10
+        min: 1
+        type: FISH
+    4:
+      item:
+        slot: 3
+        showcase:
+          title: "&e&l*&6&l* &e&lGrinder &6&l*&e&l*"
+          lore:
+            - "&e&lINFO:"
+            - "&fKill Blazes"
+            - "&r"
+            - "&6&lAMOUNT:"
+            - "&f1 - 10"
+          material: BLAZE_ROD
+          data: 0
+          url: ""
+        active:
+          title: "&e&l*&6&l* &e&lGrinder &6&l*&e&l*"
+          lore:
+            - "&6&l* &eCurrent Status: &f<status>&8/&f<required>"
+            - "&6&l* &eAction: &e<action>"
+            - "&6&l* &eType: &e<type>"
+          material: BLAZE_ROD
+          data: 0
+          url: ""
+      settings:
+        rewards:
+          - "f points give <faction> 2"
+        max: 10
+        min: 1
+        type: ENTITY_KILL
+        target: RANDOM
+    5:
+      item:
+        slot: 4
+        showcase:
+          title: "&e&l*&6&l* &e&lExp Farm &6&l*&e&l*"
+          lore:
+            - "&e&lINFO:"
+            - "&fGain Exp"
+            - "&r"
+            - "&6&lAMOUNT:"
+            - "&f1 - 10"
+          material: EXP_BOTTLE
+          data: 0
+          url: ""
+        active:
+          title: "&e&l*&6&l* &e&lExp Farm &6&l*&e&l*"
+          lore:
+            - "&6&l* &eCurrent Status: &f<status>&8/&f<required>"
+            - "&6&l* &eAction: &e<action>"
+            - "&6&l* &eType: &e<type>"
+          material: EXP_BOTTLE
+          data: 0
+          url: ""
+      settings:
+        rewards:
+          - "f points give <faction> 2"
+        max: 10
+        min: 1
+        type: EXP_GAINED
+        target: RANDOM
+
+#
+# Faction Top Settings
+#
+factiontop-settings:
+  entries: 10
+  chunks-per-tick: 30
+  broadcast-changes:
+    enabled: true
+    places: 3
+    entry: |
+      &7
+      &7
+      &r               &6&lFaction Top Warning
+      &r     &fPosition &6#<position>&f has been knocked!
+      &e<new-faction> &fhas taken over &e<old-faction> &fhaving &e$<value> &fmore!
+      &7
+      &7
+  update-interval: 1800000
+  message:
+    tooltip:
+      - "&a&l&nF Top Summary for&r <faction>"
+      - ""
+      - "&fTotal 24 hour change $&a<value-overview>"
+      - ""
+      - "&fSpawner Value: &6$<value>"
+      - "&fPotential Value: &6$<potential-value>"
+      - ""
+      - "&a&l&nPlaced Spawner Values"
+      - ""
+      - "&6Spider Spawner: &7$<SPIDER-value> &7(&f<SPIDER>&7)"
+      - "&6Zombie Spawner: &7$<ZOMBIE-value> &7(&f<ZOMBIE>&7)"
+      - "&6Skeleton Spawner: &7$<SKELETON-value>  &7(&f<SKELETON>&7)"
+      - "&6Creeper Spawner: &7$<CREEPER-value> &7(&f<CREEPER>&7)"
+      - "&6Blaze Spawner: &7$<BLAZE-value> &7(&f<BLAZE>&7)"
+      - "&6Enderman Spawner: &7$<ENDERMAN-value> &7(&f<ENDERMAN>&7)"
+      - "&6Iron Golem Spawner: &7$<IRON_GOLEM-value> &7(&f<IRON_GOLEM>&7)"
+      - "&6Villager Spawner: &7$<VILLAGER-value> &7(&f<VILLAGER>&7)"
+      - "&6Squid Spawner: &7$<SQUID-value> &7(&f<SQUID>&7)"
+    header: "&6_________.[ &a&lTop Factions &6]._________"
+    empty: "&cThere is currently no faction worthy of this spot."
+    entry: "&6<position>.&c <faction> &6Total: &7$<value>"
+    footer: "&7"
+  time-elapsed: 120000
+  spawner-values:
+    SPIDER: 250000
+    SKELETON: 500000
+    ZOMBIE: 500000
+    CREEPER: 6000000
+    BLAZE: 1000000
+    ENDERMAN: 1500000
+    IRON_GOLEM: 2000000
+    SQUID: 20000000
+    VILLAGER: 4000000
+  block-values:
+    BEDROCK: 100
+  item-values:
+    1:
+      id: "Bedrock"
+      title: "&6Bedrock"
+      lore: [ ]
+      material: BEDROCK
+      data: 0
+      url: ""
+      cost: 500
+
+#
+# Corner Settings
+#
+corner-settings:
+  rows: 1
+  title: "&eFaction Corners"
+  permission: "factions.corners.view"
+  back-button:
+    slot: 8
+  fill-item:
+    title: ""
+    lore:
+      - ""
+    material: STAINED_GLASS_PANE
+    data: 14
+    url: ""
+  panel:
+    1:
+      rows: 5
+      slot: 0
+      world: "world"
+      title: "&a&lEarth &7Corners"
+      lore:
+        - "&7Click to view &aEarth &7corner status."
+      material: GRASS
+      data: 0
+      url: ""
+      corners:
+        1:
+          slot: 0
+          title: "&aEarth &7Corners: &a+&72495 &c-&72496"
+          reg-lore:
+            - "&7Status : &r<claimed>"
+          staff-lore:
+            - "&7Status : &r<claimed>"
+            - "&7Claimed by : &r<faction>"
+          material: GRASS
+          data: 0
+          url: ""
+          location: "2495:0:-2496:world"
+
+tooltips:
+  shield:
+    - '&c&lShield'
+    - ''
+    - '&fShield Window: &e<start><start-marker> &f--->&e <end><end-marker>'
+    - ''
+    - '&fPending Shield: &cnone'
+    - ''
+    - '&fCurrent time:'
+    - '&e<time-hour>:<time-minutes>:<time-secs><time-marker>'
+  shield-invalid:
+    - '&c&lShield'
+    - ''
+    - '&fShield Window: &cnone'
+    - ''
+    - '&fPending Shield: &cnone'
+    - ''
+    - '&fCurrent time:'
+    - '&e<time-hour>:<time-minutes>:<time-secs><time-marker>'
+  shield-pending:
+    - '&c&lShield'
+    - ''
+    - '&fPending Shield: &e<start><start-marker> &f--->&e <end><end-marker>'
+    - ''
+    - '&fCurrent time:'
+    - '&e<time-hour>:<time-minutes>:<time-secs><time-marker>'
+  list:
+    - '&6Leader: &e{leader}'
+    - '&6Claims: &e{chunks}'
+    - '&6Power: &e{power}/{maxPower}'
+    - '&6Members: &e{online}/{members}'
+  show:
+    - '&6Username: &e{name}'
+    - '&6Rank: &e{group}'
+    - '&6Balance: &e${balance}'
+    - '&6Last Seen:&e {lastSeen}'
+    - '&6Power: &e{player-power}/{player-maxpower}'
+show:
+  - '&6________________.[ &2{faction} &6].________________'
+  - '&6Description: &7{description}'
+  - '&6Age: &e{create-date}'
+  - '&6Shield: &r{shield}'
+  - '&6Land /  Power / Max Power &e{chunks}/{power}/{maxPower}'
+  - '&6Bans: &e{faction-bancount}'
+  - '&6Strikes: &e{strikes}'
+  - '&6Online Members ({online}):'
+  - '&c{online-list}'
+  - '&6Offline Members ({offline}):'
+  - '&c{offline-list}'
+  - '&6Alt Members: &7{alts}'
+map:
+  - '&6Faction: &e{faction}'
+  - '&6Owner: &e{leader}'
+  - '&6Land/Power/Max Power &e{chunks}/{power}/{maxPower}'
+  - '&6Allies: &e{allies-list}'
+  - '&6Enemies: &e{enemies-list}'
+  - '&6Online Members &e{online}/{members} {online-list}'
+  - '&6Offline Members: &e{offline-list}'
+list:
+  header: '&6___________.[ &2Faction List &6].___________'
+  factionless: '&eFactionless {factionless} online'
+  entry: '&c{faction} &e{online}/{members} &e???/{power}/{maxPower}'
+
+faction-raid-status:
+  - "&7&m-----------------"
+  - "&eCurrently Being Raided By : &6<raider>"
+  - "&eCurrently Raiding : &6<raiding>"
+  - "&eGrace Status : &6<grace>"
+  - "&7&m-----------------"
+
+baseregion:
+  - "&e&lREMINDER: &fYour faction does not have a base region set."
+  - "&fPlease use &e/f setbaseregion in your claim to be protected"
+  - "&fduring shielded hours and to calculate all f top value properly!"
+
+help-settings:
+  auto: false
+  entries: 9
+  header:
+    - '           &9&lFactions Help'
+  footer:
+    - ''
+  custom:
+    '1':
+      - '&6_______.[ &2Help for command "f" &7[<] &61/9 &b[>] &6]._______'
+      - '&b/f create &3[name] &eCreate your own faction.'
+      - '&b/f who &3[name] &eShow faction information.'
+      - '&b/f tag &3[name] &eChange your faction name.'
+      - '&b/f join &3[name] &eJoin to the faction.'
+      - '&b/f list &eList all factions.'
+      - '&b/f top &eView the richest factions.'
+      - '&b/f map &eMap of the surrounding area, click chunks to claim.'
+      - '&b/f sethome &eSet your faction home.'
+      - '&b/f setbaseregion &eSet your base region.'
+    '2':
+      - '&6_______.[ &2Help for command "f" &b[<] &62/9 &b[>] &6]._______'
+      - '&b/f leave &eInvite a player to your faction.'
+      - '&b/f invite &3[name] &eShow faction information.'
+      - '&b/f claim &eClaim a land for your faction.'
+      - '&b/f unclaim &eUnclaim land from your faction.'
+      - '&b/f kick &3[name] &eKick player from your faction.'
+      - '&b/f mod &3[name] &eSet player to mod role in faction.'
+      - '&b/f coleader &3[name] &eSet player to coleader role in faction.'
+      - '&b/f admin &3[name] &eSet player role to leader in faction.'
+    '3':
+      - '&6_______.[ &2Help for command "f" &b[<] &63/9 &b[>] &6]._______'
+      - '&b/f desc &3[desc] &eChange your faction description.'
+      - '&b/f status &eView the status of your faction.'
+      - '&b/f title &3[name] [title] &eChange the in-game title of a member.'
+      - '&b/f sc &eView the surrounding chunks near you.'
+      - '&b/f disband &eDisband your faction.'
+      - '&b/f promote &3[name] &ePromote a playern in your faction.'
+      - '&b/f demote &3[name] &eDemote a player in your faction.'
+      - '&b/f perms &eChange faction perms in a GUI.'
+    '4':
+      - '&6_______.[ &2Help for command "f" &b[<] &64/9 &b[>] &6]._______'
+      - '&b/f vault &eView your faction vault.'
+      - '&b/f money &eExplore faction money commands.'
+      - '&b/f exp &eExplore exp money commands.'
+      - '&b/f tnt &eExplore tnt money commands.'
+      - '&b/f tntfill &eFill tnt into dispensers around you.'
+      - '&b/f invsee &3[name] &eView a faction members inventorys.'
+      - '&b/f mission &eOpens up Missions GUI.'
+      - '&b/f tt &eToggle territory titles.'
+    '5':
+      - '&6_______.[ &2Help for command "f" &b[<] &65/9 &b[>] &6]._______'
+      - '&b/f drain &3[player/all] &eDrain faction balances.'
+      - '&b/f spawner &eToggle spawner notifactions.'
+      - '&b/f shield &eChange faction shield time.'
+      - '&b/f logs &eView all faction logs.'
+      - '&b/f alt &eManage faction alts.'
+      - '&b/f roster &eManage faction roster.'
+      - '&b/f settings &eChange personal settings.'
+      - '&b/f chat &eChoose between faction & public chat.'
+    '6':
+      - '&6_______.[ &2Help for command "f" &b[<] &66/9 &b[>] &6]._______'
+      - '&b/f ownerlist &eView owner(s) land in that area.'
+      - '&b/f show &eShow a factions info.'
+      - '&b/f ninja &eEnable and disable stealth.'
+      - '&b/f stuck &eSafetly teleports you out of enemy land.'
+      - '&b/f ann &eCreate a faction announcement.'
+      - '&b/f showinvites &eShow all current faction invites.'
+      - '&b/f ver &eView the faction version.'
+    '7':
+      - '&6_______.[ &2Help for command "f" &b[<] &67/9 &b[>] &6]._______'
+      - '&b/f warp &3[warp] &eTeleport to a faction warp.'
+      - '&b/f setwarp &3[name] &eSet a faction warp.'
+      - '&b/f delwarp &3[warp] &eDelete a faction warp.'
+      - '&b/f login &eToggle login notifactions.'
+      - '&b/f claimline &eClaim a line of land.'
+      - '&b/f defaultrole &3[role] &eSet faction default role.'
+      - '&b/f mapheight &3[height] &eChange the /f map size.'
+    '8':
+      - '&6_______.[ &2Help for command "f" &b[<] &68/9 &b[>] &6]._______'
+      - '&b/f ban &3[name] &eBan a player from your faction.'
+      - '&b/f unban &3[name] &eunban a player from your faction.'
+      - '&b/f banlist &eView faction ban list.'
+      - '&b/f near &eView you faction members near you.'
+      - '&b/f upgrades &eView all faction upgrades.'
+      - '&b/f coords &eBroadcast your coords to your faction.'
+      - '&b/f chest &eOpen the faction chest.'
+      - '&b/f particle &eSelect the particles for yourself.'
+    '9':
+      - '&6_______.[ &2Help for command "f" &b[<] &69/9 &b[>] &6]._______'
+      - '&b/f points &eView faction points.'
+      - '&b/f shop &eOpens the faction shop.'
+      - '&b/f disguise &eOpens the faction disguise menu.'
+      - '&b/f focus &3[name] &eFocus a player.'
+      - '&b/f inspect &eInspect blocks.'
+      - '&b/f fly &3[on/off] &eEnter faction flight mode.'
+      - '&b/f raid &eView current faction raids.'
+      - '&b/f setpaypal &3[email] &eSet your faction paypal email.'
